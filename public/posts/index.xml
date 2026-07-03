@@ -15,5 +15,12 @@
       <guid>http://localhost:1313/posts/haptic-ml-project/</guid>
       <description>This project used machine learning to classify human activity patterns from smartphone inertial sensor data. Using the UCI Human Activity Recognition dataset, I trained a Random Forest classifier to distinguish between six activities: walking, walking upstairs, walking downstairs, sitting, standing, and laying. The project explored how accelerometer and gyroscope features can support human activity recognition and inform future haptic or robotic systems.</description>
     </item>
+    <item>
+      <title>你的项目标题 (例如: 自动驾驶路径规划)</title>
+      <link>http://localhost:1313/posts/my-new-project/</link>
+      <pubDate>Fri, 27 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/my-new-project/</guid>
+      <description>这里写一段简短的项目介绍，会显示在首页卡片上。</description>
+    </item>
   </channel>
 </rss>

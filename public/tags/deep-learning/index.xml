@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Python on Ke Jung Yu | ML &amp; Data Science Portfolio</title>
-    <link>http://localhost:1313/tags/python/</link>
-    <description>Recent content in Python on Ke Jung Yu | ML &amp; Data Science Portfolio</description>
+    <title>Deep Learning on Ke Jung Yu | ML &amp; Data Science Portfolio</title>
+    <link>http://localhost:1313/tags/deep-learning/</link>
+    <description>Recent content in Deep Learning on Ke Jung Yu | ML &amp; Data Science Portfolio</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
     <lastBuildDate>Fri, 27 Oct 2023 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/deep-learning/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>你的项目标题 (例如: 自动驾驶路径规划)</title>
       <link>http://localhost:1313/posts/my-new-project/</link>
