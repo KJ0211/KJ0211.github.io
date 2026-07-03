@@ -26,19 +26,25 @@ jobs:
         with:
           submodules: recursive
           fetch-depth: 0
+          
       - name: Setup Pages
         uses: actions/configure-pages@v5
+        
+      # 👇 修正这里：换成官方目前最新的完美适配版插件
       - name: Setup Hugo
-        uses: actions/setup-hugo@v2
+        uses: peaceiris/actions-hugo@v3
         with:
           hugo-version: 'latest'
           extended: true
+          
       - name: Build with Hugo
         run: hugo --minify
+        
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./public
+          
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
