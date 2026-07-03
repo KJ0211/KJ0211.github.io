@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Classifying Human Interaction Patterns in Inertial Sensor Data: A Machine Learning Approach to Inform Future Haptic and Robotic Systems | Ke Jung Yu | ML &amp; Data Science Portfolio</title>
+<meta name="keywords" content="Machine Learning, Numpy, Pandas, Scikit-Learn, Matplotlib">
+<meta name="description" content="This project used machine learning to classify human activity patterns from smartphone inertial sensor data. Using the UCI Human Activity Recognition dataset, I trained a Random Forest classifier to distinguish between six activities: walking, walking upstairs, walking downstairs, sitting, standing, and laying. The project explored how accelerometer and gyroscope features can support human activity recognition and inform future haptic or robotic systems.">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/posts/haptic-ml-project/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.89ca4972ab5e6aaa05e9a0dae0c4bb64b26585bc79e36f5cf33614eea0283abe.css" integrity="sha256-icpJcqteaqoF6aDa4MS7ZLJlhbx5429c8zYU7qAoOr4=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="zh-cn" href="http://localhost:1313/posts/haptic-ml-project/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Ke Jung Yu | ML &amp; Data Science Portfolio (Alt + H)">Ke Jung Yu | ML &amp; Data Science Portfolio</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Classifying Human Interaction Patterns in Inertial Sensor Data: A Machine Learning Approach to Inform Future Haptic and Robotic Systems
+    </h1>
+    <div class="post-meta">
+
+<span title='2026-05-02 00:00:00 +0000 UTC'>May 2, 2026</span>&nbsp;·&nbsp;<span>3 min</span>
+
+</div>
+  </header> 
+  <div class="post-content md-content"><h2 id="1-problem">1. Problem<a hidden class="anchor" aria-hidden="true" href="#1-problem">#</a></h2>
+<p>Human movement patterns can be difficult to classify accurately from sensor data, especially when different postures produce similar signals. This project investigated whether high-dimensional inertial features could distinguish between static and dynamic human activities, and which sensor features were most useful for classification.</p>
+<h2 id="2-dataset">2. Dataset<a hidden class="anchor" aria-hidden="true" href="#2-dataset">#</a></h2>
+<p>The project used the UCI Human Activity Recognition dataset, collected from 30 participants aged 19 to 48. Participants wore a Samsung Galaxy S II smartphone on the waist while performing six activities. The dataset contains 3-axis accelerometer and gyroscope readings captured at 50 Hz, with 561 pre-extracted time and frequency-domain features. The data was split by participant, with 70% used for training and 30% used for testing on unseen individuals.
+<img alt="Activity Distribution" loading="lazy" src="/images/figure-1.jpg"></p>
+<h2 id="3-methodology">3. Methodology<a hidden class="anchor" aria-hidden="true" href="#3-methodology">#</a></h2>
+<ul>
+<li>Prepared the high-dimensional sensor dataset for machine learning</li>
+<li>Encoded activity labels into numerical classes</li>
+<li>Checked class distribution and confirmed the dataset was balanced</li>
+<li>Analysed correlations between the 561 sensor features</li>
+<li>Trained a Random Forest classifier with 100 estimators</li>
+<li>Used feature-importance analysis to identify the most predictive sensor features</li>
+<li>Evaluated model performance using a confusion matrix and classification report
+<img alt="Confusion matrix" loading="lazy" src="/images/figure-4.png">
+<img alt="Classification" loading="lazy" src="/images/figure-5.jpg"></li>
+</ul>
+<h2 id="4-evaluation">4. Evaluation<a hidden class="anchor" aria-hidden="true" href="#4-evaluation">#</a></h2>
+<p>The Random Forest model achieved 93% accuracy on the unseen test set. The model performed strongly on dynamic movements such as walking and on distinct static postures such as laying. Evaluation using the confusion matrix showed that the main source of error was confusion between sitting and standing, because both activities produce similar waist-level gravity orientation signals.
+<img alt="Top 20 features" loading="lazy" src="/images/figure-2.jpg"></p>
+<h2 id="5-conclusion">5. Conclusion<a hidden class="anchor" aria-hidden="true" href="#5-conclusion">#</a></h2>
+<p>The project showed that Random Forest can classify human activity patterns effectively from high-dimensional inertial sensor data. Feature-importance analysis showed that gravity-based orientation features were among the strongest predictors. The results suggest that tilt-sensing and movement-intensity features are especially useful for designing responsive haptic and robotic systems.</p>
+<h2 id="6-reflection">6. Reflection<a hidden class="anchor" aria-hidden="true" href="#6-reflection">#</a></h2>
+<p>This project strengthened my understanding of supervised machine learning, sensor-data classification, feature importance, model evaluation, and the practical limitations of classification models. It also helped me understand how machine learning results can be interpreted and connected to human-centred technology design.</p>
+<h1 id="features-extraction-coding">Features Extraction Coding<a hidden class="anchor" aria-hidden="true" href="#features-extraction-coding">#</a></h1>
+<p>import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.preprocessing import LabelEncoder
+from sklearn.feature_selection import VarianceThreshold
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import classification_report, confusion_matrix, accuracy_score</p>
+<h1 id="heading">==========================================<a hidden class="anchor" aria-hidden="true" href="#heading">#</a></h1>
+<h1 id="1-data-preparation--cleaning">1. Data Preparation &amp; Cleaning<a hidden class="anchor" aria-hidden="true" href="#1-data-preparation--cleaning">#</a></h1>
+<h1 id="heading-1">==========================================<a hidden class="anchor" aria-hidden="true" href="#heading-1">#</a></h1>
+<h1 id="load-the-datasets">Load the datasets<a hidden class="anchor" aria-hidden="true" href="#load-the-datasets">#</a></h1>
+<p>train_df = pd.read_csv(&rsquo;train.csv&rsquo;)
+test_df = pd.read_csv(&rsquo;test.csv')</p>
+<h1 id="requirement-data-science-process---cleaning">(Requirement: Data Science Process - Cleaning)<a hidden class="anchor" aria-hidden="true" href="#requirement-data-science-process---cleaning">#</a></h1>
+<p>print(&quot;&mdash; Missing Values Check &mdash;&quot;)
+print(f&quot;Missing values in Train: {train_df.isnull().values.any()}&quot;)
+print(f&quot;Missing values in Test: {test_df.isnull().values.any()}&quot;)</p>
+<h1 id="separate-features-x-and-labels-y">Separate features (X) and labels (y)<a hidden class="anchor" aria-hidden="true" href="#separate-features-x-and-labels-y">#</a></h1>
+<p>X_train = train_df.iloc[:, :-1]
+y_train = train_df.iloc[:, -1]
+X_test = test_df.iloc[:, :-1]
+y_test = test_df.iloc[:, -1]</p>
+<h1 id="label-encoding">Label Encoding<a hidden class="anchor" aria-hidden="true" href="#label-encoding">#</a></h1>
+<p>le = LabelEncoder()
+y_train_encoded = le.fit_transform(y_train)
+y_test_encoded = le.transform(y_test)</p>
+<h1 id="heading-2">==========================================<a hidden class="anchor" aria-hidden="true" href="#heading-2">#</a></h1>
+<h1 id="2-exploratory-data-analysis">2. Exploratory Data Analysis<a hidden class="anchor" aria-hidden="true" href="#2-exploratory-data-analysis">#</a></h1>
+<h1 id="heading-3">==========================================<a hidden class="anchor" aria-hidden="true" href="#heading-3">#</a></h1>
+<p>print(&quot;\n&mdash; Exploratory Data Analysis &mdash;&quot;)</p>
+<h1 id="a-activity-distribution">A. Activity Distribution<a hidden class="anchor" aria-hidden="true" href="#a-activity-distribution">#</a></h1>
+<p>plt.figure(figsize=(10, 5))
+sns.countplot(x=y_train)
+plt.title(&ldquo;Distribution of Activities in Training Set&rdquo;)
+plt.xticks(rotation=45)
+plt.show()</p>
+<h1 id="b-correlation-heatmap">B. Correlation Heatmap<a hidden class="anchor" aria-hidden="true" href="#b-correlation-heatmap">#</a></h1>
+<p>plt.figure(figsize=(12, 10))
+top_20_corr = X_train.iloc[:, :20].corr()
+sns.heatmap(top_20_corr, annot=False, cmap=&lsquo;coolwarm&rsquo;)
+plt.title(&ldquo;Correlation Heatmap (First 20 Features)&rdquo;)
+plt.show()</p>
+<h1 id="heading-4">==========================================<a hidden class="anchor" aria-hidden="true" href="#heading-4">#</a></h1>
+<h1 id="3-feature-selection">3. Feature Selection<a hidden class="anchor" aria-hidden="true" href="#3-feature-selection">#</a></h1>
+<h1 id="heading-5">==========================================<a hidden class="anchor" aria-hidden="true" href="#heading-5">#</a></h1>
+<h1 id="remove-constant-features-variance-threshold">Remove constant features (Variance Threshold)<a hidden class="anchor" aria-hidden="true" href="#remove-constant-features-variance-threshold">#</a></h1>
+<p>selector = VarianceThreshold(threshold=0)
+X_train_reduced = selector.fit_transform(X_train)
+X_test_reduced = selector.transform(X_test)
+print(f&quot;Features reduced from {X_train.shape[1]} to {X_train_reduced.shape[1]} by removing constants.&quot;)</p>
+<h1 id="heading-6">==========================================<a hidden class="anchor" aria-hidden="true" href="#heading-6">#</a></h1>
+<h1 id="4-model-training">4. Model Training<a hidden class="anchor" aria-hidden="true" href="#4-model-training">#</a></h1>
+<h1 id="heading-7">==========================================<a hidden class="anchor" aria-hidden="true" href="#heading-7">#</a></h1>
+<p>rf_model = RandomForestClassifier(n_estimators=100, random_state=42)
+rf_model.fit(X_train_reduced, y_train_encoded)</p>
+<h1 id="heading-8">==========================================<a hidden class="anchor" aria-hidden="true" href="#heading-8">#</a></h1>
+<h1 id="5-evaluation--knowledge-extraction">5. Evaluation &amp; Knowledge Extraction<a hidden class="anchor" aria-hidden="true" href="#5-evaluation--knowledge-extraction">#</a></h1>
+<h1 id="heading-9">==========================================<a hidden class="anchor" aria-hidden="true" href="#heading-9">#</a></h1>
+<p>y_pred = rf_model.predict(X_test_reduced)</p>
+<h1 id="a-accuracy--report">A. Accuracy &amp; Report<a hidden class="anchor" aria-hidden="true" href="#a-accuracy--report">#</a></h1>
+<p>print(f&quot;\nOverall Accuracy: {accuracy_score(y_test_encoded, y_pred) * 100:.2f}%&quot;)
+print(&quot;\nClassification Report:&quot;)
+print(classification_report(y_test_encoded, y_pred, target_names=le.classes_))</p>
+<h1 id="b-confusion-matrix">B. Confusion Matrix<a hidden class="anchor" aria-hidden="true" href="#b-confusion-matrix">#</a></h1>
+<p>cm = confusion_matrix(y_test_encoded, y_pred)
+plt.figure(figsize=(10, 8))
+sns.heatmap(cm, annot=True, fmt=&rsquo;d&rsquo;, cmap=&lsquo;Blues&rsquo;,
+xticklabels=le.classes_, yticklabels=le.classes_)
+plt.title(&ldquo;Confusion Matrix: Visualizing Sitting vs Standing Conflict&rdquo;)
+plt.xlabel(&ldquo;Predicted Label&rdquo;)
+plt.ylabel(&ldquo;True Label&rdquo;)
+plt.show()</p>
+<h1 id="c-feature-importance">C. Feature Importance<a hidden class="anchor" aria-hidden="true" href="#c-feature-importance">#</a></h1>
+<p>importances = rf_model.feature_importances_
+indices = np.argsort(importances)[::-1]</p>
+<p>print(&quot;\nTop 10 Most Predictive Features:&quot;)
+for i in range(10):
+print(f&quot;{i+1}. {X_train.columns[indices[i]]} ({importances[indices[i]]:.4f})&quot;)</p>
+<p>print(f&quot;Sum of importances: {importances.sum():.2f}&quot;)
+plt.figure(figsize=(10, 6))
+plt.title(&ldquo;Top 20 Feature Importances&rdquo;)
+plt.bar(range(20), importances[indices[:20]], color=&lsquo;skyblue&rsquo;, align=&ldquo;center&rdquo;)
+plt.xticks(range(20), X_train.columns[indices[:20]], rotation=90)
+plt.tight_layout()
+plt.show()</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/machine-learning/">Machine Learning</a></li>
+      <li><a href="http://localhost:1313/tags/numpy/">Numpy</a></li>
+      <li><a href="http://localhost:1313/tags/pandas/">Pandas</a></li>
+      <li><a href="http://localhost:1313/tags/scikit-learn/">Scikit-Learn</a></li>
+      <li><a href="http://localhost:1313/tags/matplotlib/">Matplotlib</a></li>
+    </ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">Ke Jung Yu | ML &amp; Data Science Portfolio</a></span> · 
+
+    
+    
+    <span>
+        Powered by
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var toplink = document.getElementById("top-link");
+    window.onscroll = function () {
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
+        } else {
+            toplink.classList.add("hidden");
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

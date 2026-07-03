@@ -1,0 +1,32 @@
+baseURL = "https://KJ0211.github.io/"
+title = "Ke Jung Yu | ML & Data Science Portfolio"
+theme = "PaperMod"
+
+[languages.zh-cn]
+    label = "中文"
+    locale = "zh-cn"
+
+[params]
+    # 关闭纯文本简介，开启“个人简介 + 项目卡片流”的完美求职布局
+    profileMode = { enabled = false } 
+    
+    # 主页顶部欢迎语配置
+    homeInfoParams = { title = "Hi, I'm Ke Jung Yu 🚀", subtitle = "MSc Human-Computer Interaction | Aspiring Machine Learning Engineer & Data Scientist" }
+    
+    # 强制让首页把所有 posts 文件夹里的文章当做项目卡片列出来
+    mainSections = ["posts"]
+    
+    # 显示文章的阅读时间、发布日期等，显得内容非常扎实
+    ShowReadingTime = true
+    ShowShareButtons = false
+    ShowPostNavLinks = true
+    
+    # 开启 LaTeX 机器学习公式支持
+    math = true
+
+    [[params.socialIcons]]
+        name = "github"
+        url = "https://github.com/q8x7u"
+
+[markup.highlight]
+    style = "github-dark"

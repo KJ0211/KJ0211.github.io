@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Python on Ke Jung Yu | ML &amp; Data Science Portfolio</title>
+    <link>http://localhost:1313/tags/python/</link>
+    <description>Recent content in Python on Ke Jung Yu | ML &amp; Data Science Portfolio</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 02 Jul 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>基于传感器数据的机器学习分类项目</title>
+      <link>http://localhost:1313/posts/haptic-ml-project/</link>
+      <pubDate>Thu, 02 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/haptic-ml-project/</guid>
+      <description>这个项目通过处理时序传感器数据，利用特征工程与随机森林模型，实现了对特定交互行为的高精度分类。</description>
+    </item>
+  </channel>
+</rss>
